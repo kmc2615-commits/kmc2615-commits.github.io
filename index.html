@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>放課後スターレター</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="title-screen is-active" id="titleScreen" aria-label="タイトル画面">
+      <div class="star-field" aria-hidden="true"></div>
+      <div class="title-content">
+        <p class="title-label">After School Otome Novel</p>
+        <h1>放課後<br>スターレター</h1>
+        <p class="title-copy">文化祭まであと3日。あなたの一言で、放課後の距離が変わっていく。</p>
+        <div class="title-actions">
+          <button class="primary-button" id="startButton" type="button">はじめる</button>
+          <button class="ghost-button" id="continueButton" type="button">つづきから</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-screen" id="gameScreen" aria-label="ゲーム画面">
+      <div class="scene-art" id="sceneArt">
+        <div class="sky"></div>
+        <div class="sun"></div>
+        <div class="school-building" aria-hidden="true">
+          <div class="roof"></div>
+          <div class="windows"></div>
+          <div class="door"></div>
+        </div>
+        <div class="character-stage" aria-hidden="true">
+          <div class="character-card" id="characterRen">
+            <img class="portrait ren" src="assets/aoi.png" alt="蓮">
+            <p>蓮</p>
+          </div>
+          <div class="character-card" id="characterAoi">
+            <img class="portrait aoi" src="assets/ren.png" alt="蒼">
+            <p>蒼</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="status-panel" aria-label="好感度">
+        <div class="status-card">
+          <span>蓮</span>
+          <div class="meter"><span id="renMeter"></span></div>
+          <strong id="renScore">0</strong>
+        </div>
+        <div class="status-card">
+          <span>蒼</span>
+          <div class="meter"><span id="aoiMeter"></span></div>
+          <strong id="aoiScore">0</strong>
+        </div>
+      </aside>
+
+      <section class="dialogue-panel" aria-live="polite">
+        <div class="nameplate" id="speakerName">主人公</div>
+        <div class="ending-badge" id="endingBadge" hidden></div>
+        <p class="dialogue-text" id="dialogueText"></p>
+        <div class="choices" id="choices"></div>
+        <div class="control-bar">
+          <button class="icon-button" id="backlogButton" type="button" aria-label="バックログ">履歴</button>
+          <button class="icon-button" id="saveButton" type="button" aria-label="セーブ">保存</button>
+          <button class="icon-button" id="loadButton" type="button" aria-label="ロード">読込</button>
+          <button class="icon-button" id="resetButton" type="button" aria-label="最初から">最初</button>
+        </div>
+      </section>
+    </section>
+
+    <dialog class="backlog-modal" id="backlogModal">
+      <div class="modal-header">
+        <h2>バックログ</h2>
+        <button class="close-button" id="closeBacklogButton" type="button" aria-label="閉じる">×</button>
+      </div>
+      <ol id="backlogList"></ol>
+    </dialog>
+
+    <dialog class="ending-modal" id="endingModal">
+      <div class="ending-modal-content">
+        <p class="ending-modal-label">Ending Complete</p>
+        <h2 id="endingModalTitle"></h2>
+        <p id="endingModalType"></p>
+        <div class="ending-modal-actions">
+          <button class="primary-button" id="endingTitleButton" type="button">タイトルへ戻る</button>
+          <button class="ghost-dark-button" id="endingCloseButton" type="button">余韻を見る</button>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
